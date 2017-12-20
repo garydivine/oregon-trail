@@ -50,7 +50,7 @@
 
         //when implemented, There should be 50% chance to increase the traveler's food by 100.
         //return the travelers new food value
-        hunt() {
+        hunt(): number {
             if (Math.random() > 0.5) {
                 this.food = this.food + 100
             }
@@ -64,7 +64,7 @@
         //If they do then we should consume 20 of the available food supply
         //If they don't have 20 food then we should change isHealthy to false
         //return the travelers health after attempting to eat
-        eat() {
+        eat(): boolean {
             if (this.food >= 20) {
                 this.food = this.food - 20;
             } else {
@@ -90,7 +90,7 @@
 
         //when implemented, we should add the traveler to the wagon if the capacity permits
         //this function should return the string "added" on success and "sorry" on failure
-        addPassenger(traveler: Traveler) {
+        addPassenger(traveler: Traveler): string {
             if (this.capacity != 0) {
                 this.passengerArray.push(traveler);
                 this.capacity = this.capacity - 1;
@@ -102,8 +102,8 @@
 
         //this should return true if there is at least one unhealthy person in the wagon
         //if everyone is healthy false should be returned
-        isQuarantined() {
-            let quarantined = false;
+        isQuarantined(): boolean {
+            let quarantined: boolean = false;
 
             for (let passenger of this.passengerArray) {
                 if (passenger.isHealthy == false) {
@@ -116,14 +116,13 @@
         }
 
         //Return the total amount of food among all passengers of the wagon.
-        getFood() {
-             let totalFoodAmount = 0;
+        getFood(): number {
+             let totalFoodAmount: number = 0;
 
             for (let passenger of this.passengerArray) {
                 totalFoodAmount = totalFoodAmount + passenger.food;
             }
-
-
+            
             return totalFoodAmount;
         }
     }
